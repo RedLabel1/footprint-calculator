@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:footprint_calculator/business/business.dart';
 import 'package:footprint_calculator/home/home.dart';
 import 'package:footprint_calculator/school/school.dart';
+import 'package:footprint_calculator/map/map.dart';
 
 class Destination {
 
@@ -22,4 +23,7 @@ class Destination {
 
   factory Destination.school() =>
       Destination(BottomNavigationBarItem(icon: Icon(Icons.school), title: Text("School")), School());
+
+  factory Destination.map() =>
+      Destination(BottomNavigationBarItem(icon: Icon(Icons.map), title: Text("Map")), Map());
 }

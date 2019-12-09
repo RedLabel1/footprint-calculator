@@ -18,8 +18,13 @@ class BottomNavBar extends StatelessWidget {
 
   BottomNavigationBar _bottomNavigationBar(Destination destination, MainNavigationBloc bloc) =>
       BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: bloc.indexOf(destination),
         items: bloc.bottomNavigationBarItems,
         onTap: (index) => bloc.addDestination(index),
       );
+}
+
+extension MyFancyList<T> on List<T> {
+
 }

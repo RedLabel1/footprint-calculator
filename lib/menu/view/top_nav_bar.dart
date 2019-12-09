@@ -21,7 +21,8 @@ class TopNavBar extends StatelessWidget implements PreferredSizeWidget {
 
   BottomNavigationBar _topNavigationBar(Destination destination, MainNavigationBloc bloc) =>
       BottomNavigationBar(
-        elevation: 2,
+        type: BottomNavigationBarType.fixed,
+        elevation: 2.0,
         currentIndex: bloc.indexOf(destination),
         items: bloc.bottomNavigationBarItems,
         onTap: (index) => bloc.addDestination(index),

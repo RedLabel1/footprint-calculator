@@ -14,6 +14,7 @@ class MainNavigationBloc {
       Destination.home(),
       Destination.business(),
       Destination.school(),
+      Destination.map(),
     ];
 
     _initialDestination = destinations[0];
