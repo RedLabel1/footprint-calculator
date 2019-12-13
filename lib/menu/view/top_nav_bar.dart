@@ -29,5 +29,5 @@ class TopNavBar extends StatelessWidget implements PreferredSizeWidget {
       );
 
   @override
-  Size get preferredSize => Size.fromHeight(54.0);
+  Size get preferredSize => Size.fromHeight(78.0);
 }

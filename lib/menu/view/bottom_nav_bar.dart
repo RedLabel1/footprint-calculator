@@ -25,6 +25,12 @@ class BottomNavBar extends StatelessWidget {
       );
 }
 
-extension MyFancyList<T> on List<T> {
+extension on BottomNavigationBar {
 
+  Widget animateCurrentItem() => AnimatedSize(
+    duration: Duration(milliseconds: 200),
+    child: this.items[this.currentIndex].activeIcon,
+    vsync: this.createState(
+    ),
+  );
 }

@@ -16,7 +16,7 @@ class Destination {
   Destination(this._bottomNavigationBarItem, this._child);
 
   factory Destination.home() =>
-      Destination(BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home")), Home());
+      Destination(BottomNavigationBarItem(icon: Image.asset("assets/icons/01_huella-48color.png"), title: Text("Home")), Home());
 
   factory Destination.business() =>
       Destination(BottomNavigationBarItem(icon: Icon(Icons.business), title: Text("Business")), Business());
