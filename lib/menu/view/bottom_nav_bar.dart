@@ -18,19 +18,11 @@ class BottomNavBar extends StatelessWidget {
 
   BottomNavigationBar _bottomNavigationBar(Destination destination, MainNavigationBloc bloc) =>
       BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
         currentIndex: bloc.indexOf(destination),
         items: bloc.bottomNavigationBarItems,
         onTap: (index) => bloc.addDestination(index),
       );
-}
-
-extension on BottomNavigationBar {
-
-  Widget animateCurrentItem() => AnimatedSize(
-    duration: Duration(milliseconds: 200),
-    child: this.items[this.currentIndex].activeIcon,
-    vsync: this.createState(
-    ),
-  );
 }

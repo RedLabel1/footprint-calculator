@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class Tips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Center(child: Text("Home")));
+    return Container(child: Center(child: Text("Tips")));
   }
 }

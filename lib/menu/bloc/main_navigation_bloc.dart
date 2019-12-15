@@ -4,20 +4,20 @@ import 'package:rxdart/rxdart.dart';
 
 class MainNavigationBloc {
 
-  List<Destination> destinations;
-
+  List<Destination> _destinations;
   Destination _initialDestination;
   PublishSubject<Destination> _currentDestination;
 
   MainNavigationBloc() {
-    destinations = <Destination>[
-      Destination.home(),
-      Destination.business(),
-      Destination.school(),
-      Destination.map(),
+    _destinations = <Destination>[
+      Destination.footprint(),
+      Destination.stats(),
+      Destination.tips(),
+      Destination.news(),
+      Destination.profile(),
     ];
 
-    _initialDestination = destinations[0];
+    _initialDestination = _destinations[0];
     _currentDestination = PublishSubject<Destination>();
   }
 
@@ -25,15 +25,15 @@ class MainNavigationBloc {
 
   Observable<Destination> get currentDestination => _currentDestination.stream;
 
-  int indexOf(Destination destination) => destinations.indexOf(destination);
+  int indexOf(Destination destination) => _destinations.indexOf(destination);
 
-  get children => destinations.map<Widget>((destination) => destination.child).toList();
+  get children => _destinations.map<Widget>((destination) => destination.child).toList();
 
-  get bottomNavigationBarItems => destinations.map<BottomNavigationBarItem>((destination) => destination.bottomNavigationBarItem).toList();
+  get bottomNavigationBarItems => _destinations.map<BottomNavigationBarItem>((destination) => destination.bottomNavigationBarItem).toList();
 
   set destination(Destination destination) => _currentDestination.add(destination);
 
-  void addDestination(int index) => _currentDestination.add(destinations[index]);
+  void addDestination(int index) => _currentDestination.add(_destinations[index]);
 
   void dispose() => _currentDestination.close();
 }
