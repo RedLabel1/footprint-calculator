@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:footprint_calculator/menu/bloc/main_navigation_bloc.dart';
+import 'package:footprint_calculator/menu/bloc/top_navigation_bloc.dart';
 import 'package:footprint_calculator/menu/model/destination.dart';
 import 'package:provider/provider.dart';
 
@@ -7,7 +7,7 @@ class TopNavBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    MainNavigationBloc bloc = Provider.of<MainNavigationBloc>(context);
+    TopNavigationBloc bloc = Provider.of<TopNavigationBloc>(context);
 
     return StreamBuilder(
       stream: bloc.currentDestination,
@@ -19,7 +19,7 @@ class TopNavBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  BottomNavigationBar _topNavigationBar(Destination destination, MainNavigationBloc bloc) =>
+  BottomNavigationBar _topNavigationBar(Destination destination, TopNavigationBloc bloc) =>
       BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
