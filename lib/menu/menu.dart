@@ -10,19 +10,10 @@ Provider footprintCalculator() =>
     Provider<MainNavigationBloc>(
       create: (_) => MainNavigationBloc(),
       dispose: (_, bloc) => bloc.dispose(),
-      child: _Menu(),
+      child: _scaffold(),
     );
 
-class _Menu extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    MainNavigationBloc bloc = Provider.of<MainNavigationBloc>(context);
-
-    return _scaffold(bloc);
-  }
-}
-
-Scaffold _scaffold(MainNavigationBloc bloc) =>
-    Scaffold(body: _safeArea(), appBar: AgresteAppBar(bloc: bloc), bottomNavigationBar: BottomNavBar(bloc: bloc));
+Scaffold _scaffold() =>
+    Scaffold(body: _safeArea(), appBar: AgresteAppBar(), bottomNavigationBar: BottomNavBar());
 
 SafeArea _safeArea() => SafeArea(child: Body());

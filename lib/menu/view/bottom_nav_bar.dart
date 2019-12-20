@@ -6,12 +6,9 @@ import '../bloc/main_navigation_bloc.dart';
 
 class BottomNavBar extends StatelessWidget {
 
-  final MainNavigationBloc bloc;
-
-  BottomNavBar({Key key, this.bloc});
-
   @override
   Widget build(BuildContext context) {
+    MainNavigationBloc bloc = Provider.of<MainNavigationBloc>(context);
 
     return StreamBuilder(
       stream: bloc.currentDestination,
