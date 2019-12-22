@@ -19,6 +19,7 @@ class BottomNavBar extends StatelessWidget {
 
   BottomNavigationBar _bottomNavigationBar(Destination destination, MainNavigationBloc bloc) =>
       BottomNavigationBar(
+        key: bottomNavigationBarKey,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
@@ -27,3 +28,7 @@ class BottomNavBar extends StatelessWidget {
         onTap: (index) => bloc.addDestination(index),
       );
 }
+
+final bottomNavigationBarKey = GlobalKey(debugLabel: "bottom_navigation_bar_key");
+
+final bottomNavigationBar = bottomNavigationBarKey.currentWidget as BottomNavigationBar;
