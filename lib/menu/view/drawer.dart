@@ -10,6 +10,9 @@ class AgresteDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: <Widget>[
+          DrawerHeader(
+            child: _drawerHeader(),
+          ),
           ListTile(
             title: Text(bloc.footprint.keys.first),
             leading: bloc.footprint.values.first,
@@ -45,3 +48,21 @@ class AgresteDrawer extends StatelessWidget {
     );
   }
 }
+
+Widget _drawerHeader() =>
+    Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+          Container(
+            child: Image.asset(
+              "assets/icons/logo.png",
+              height: 80.0,
+              fit: BoxFit.cover,
+        ),
+          ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Fundación Agreste"),
+        ),
+      ],
+    );
