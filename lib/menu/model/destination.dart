@@ -25,7 +25,7 @@ class Destination {
             activeIcon: Image.asset("assets/icons/footprint_selected.png"),
             title: Text("Calcula tu huella"),
           ),
-          footprint(),
+          Footprint(),
           "Calcula tu huella");
 
   factory Destination.tips() =>
