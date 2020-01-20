@@ -4,7 +4,7 @@ import 'package:footprint_calculator/menu/view/bottom_nav_bar.dart';
 
 class DrawerBloc {
 
-  Map<String, Widget> get footprint => {"Huella de carbono": Image.asset("assets/icons/footprint_selected.png")};
+  Map<String, Widget> get footprint => {"Calcula tu huella": Image.asset("assets/icons/footprint_selected.png")};
 
   Map<String, Widget> get tips => {"Consejos": Image.asset("assets/icons/tips_selected.png")};
 

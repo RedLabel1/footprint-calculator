@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:footprint_calculator/game/game.dart';
 import 'package:footprint_calculator/shop/shop.dart';
-import 'package:footprint_calculator/footprint/footprint.dart';
+import 'package:footprint_calculator/footprint/view/footprint.dart';
 import 'package:footprint_calculator/tips/tips.dart';
 
 class Destination {
@@ -23,10 +23,10 @@ class Destination {
           BottomNavigationBarItem(
             icon: Image.asset("assets/icons/footprint_idle.png"),
             activeIcon: Image.asset("assets/icons/footprint_selected.png"),
-            title: Text("Huella de carbono"),
+            title: Text("Calcula tu huella"),
           ),
-          Footprint(),
-          "Huella de carbono");
+          footprint(),
+          "Calcula tu huella");
 
   factory Destination.tips() =>
       Destination(

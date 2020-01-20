@@ -8,17 +8,15 @@ import 'view/body.dart';
 import 'view/bottom_nav_bar.dart';
 import 'bloc/main_navigation_bloc.dart';
 
-MultiProvider footprintCalculator() =>
-    MultiProvider(
+MultiProvider footprintCalculator() => MultiProvider(
       providers: [
-        Provider(create: (_) => MainNavigationBloc(), dispose: (_, bloc) => bloc.dispose()),
-        Provider(create: (_) => DrawerBloc()),
+        Provider<MainNavigationBloc>(create: (_) => MainNavigationBloc(), dispose: (_, bloc) => bloc.dispose()),
+        Provider<DrawerBloc>(create: (_) => DrawerBloc()),
       ],
       child: _scaffold(),
     );
 
-Scaffold _scaffold() =>
-    Scaffold(
+Scaffold _scaffold() => Scaffold(
       body: _safeArea(),
       appBar: AgresteAppBar(),
       bottomNavigationBar: BottomNavBar(),
