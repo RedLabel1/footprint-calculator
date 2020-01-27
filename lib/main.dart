@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:footprint_calculator/about/about.dart';
+import 'package:footprint_calculator/analytics/analytics_bloc.dart';
 import 'package:footprint_calculator/footprint/bloc/footprint_bloc.dart';
 import 'package:footprint_calculator/menu/bloc/drawer_bloc.dart';
 import 'package:footprint_calculator/menu/bloc/main_navigation_bloc.dart';
@@ -17,6 +18,7 @@ MultiProvider footprintCalculator() => MultiProvider(
     Provider<MainNavigationBloc>(create: (_) => MainNavigationBloc(), dispose: (_, bloc) => bloc.dispose()),
     Provider<FootprintBloc>(create: (_) => FootprintBloc()),
     Provider<DrawerBloc>(create: (_) => DrawerBloc()),
+    Provider<AnalyticsBloc>(create: (_) => AnalyticsBloc()),
   ],
   child: MaterialApp(
     initialRoute: "/",

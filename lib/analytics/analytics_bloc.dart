@@ -1,20 +1,12 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-class Analytics {
+class AnalyticsBloc {
 
-  static final Analytics _instance = Analytics._internal();
-
-  FirebaseAnalytics _firebaseAnalytics;
+  FirebaseAnalytics _firebaseAnalytics = FirebaseAnalytics();
 
   String analyticsComponentName;
 
-  factory Analytics() => _instance;
-
-  Analytics._internal() {
-    _firebaseAnalytics = FirebaseAnalytics();
-  }
-
-  void logEvent(String eventName) {
-    _firebaseAnalytics.
+  void logEvent({ String eventName, Map<String, dynamic> parameters }) {
+    _firebaseAnalytics.logEvent(name: eventName, parameters: parameters);
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:footprint_calculator/analytics/analytics.dart';
 import 'package:footprint_calculator/menu/model/destination.dart';
 import 'package:rxdart/rxdart.dart';
 
-class MainNavigationBloc {
+class MainNavigationBloc implements Analytics {
 
   Destination _initialDestination;
   PublishSubject<Destination> _currentDestination;
@@ -11,6 +12,9 @@ class MainNavigationBloc {
     _initialDestination = destinations[0];
     _currentDestination = PublishSubject<Destination>();
   }
+
+  @override
+  String get analyticsComponentName => "main_navigation";
 
   Destination get initialDestination => _initialDestination;
 
