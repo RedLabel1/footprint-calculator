@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "418707665244",
+    "firebase_url": "https://leafy-beach-266410.firebaseio.com",
+    "project_id": "leafy-beach-266410",
+    "storage_bucket": "leafy-beach-266410.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418707665244:android:7cc3c0bc335deb6388d199",
+        "android_client_info": {
+          "package_name": "org.agreste.footprint_calculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418707665244-mb5d6je69g0ucjmk6qdeoi7r33t7phoe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.agreste.footprint_calculator",
+            "certificate_hash": "6d22180a800f24d7f4027ec24f494ff88046f7d1"
+          }
+        },
+        {
+          "client_id": "418707665244-mrf57rcj16htlhmqujvo5n5qsd42fuca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkYGPH_goTXnAYTWJl7y5voZnvdwqMdmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418707665244-mrf57rcj16htlhmqujvo5n5qsd42fuca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
