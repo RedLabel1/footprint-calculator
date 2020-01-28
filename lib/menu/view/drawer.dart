@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:footprint_calculator/analytics/analytics_bloc.dart';
+import 'package:footprint_calculator/analytics/analytics_list_tile.dart';
 import 'package:footprint_calculator/menu/bloc/drawer_bloc.dart';
+import 'package:footprint_calculator/menu/bloc/main_navigation_bloc.dart';
 import 'package:provider/provider.dart';
 
 class AgresteDrawer extends StatelessWidget {
@@ -7,38 +10,52 @@ class AgresteDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DrawerBloc bloc = Provider.of<DrawerBloc>(context);
+    MainNavigationBloc navigation = Provider.of<MainNavigationBloc>(context);
+    AnalyticsBloc analytics = Provider.of<AnalyticsBloc>(context);
     return Drawer(
       child: ListView(
         children: <Widget>[
           DrawerHeader(
             child: _drawerHeader(),
           ),
-          ListTile(
+          AnalyticsDrawerListTile(
+            analyticsComponentName: bloc.analyticsComponentName,
+            analyticsInstance: analytics.firebaseAnalytics,
             title: Text(bloc.footprint.keys.first),
             leading: bloc.footprint.values.first,
-            onTap: () => bloc.navigateToFootprint(context),
+            onTap: () => bloc.navigateToMainDestination(() => navigation.addDestination(0), context),
           ),
-          ListTile(
+          AnalyticsDrawerListTile(
+            analyticsComponentName: bloc.analyticsComponentName,
+            analyticsInstance: analytics.firebaseAnalytics,
             title: Text(bloc.tips.keys.first),
             leading: bloc.tips.values.first,
-            onTap: () => bloc.navigateToTips(context),
+            onTap: () => bloc.navigateToMainDestination(() => navigation.addDestination(1), context),
           ),
-          ListTile(
+          AnalyticsDrawerListTile(
+            analyticsComponentName: bloc.analyticsComponentName,
+            analyticsInstance: analytics.firebaseAnalytics,
             title: Text(bloc.game.keys.first),
             leading: bloc.game.values.first,
-            onTap: () => bloc.navigateToGame(context),
+            onTap: () => bloc.navigateToMainDestination(() => navigation.addDestination(2), context),
           ),
-          ListTile(
+          AnalyticsDrawerListTile(
+            analyticsComponentName: bloc.analyticsComponentName,
+            analyticsInstance: analytics.firebaseAnalytics,
             title: Text(bloc.shop.keys.first),
             leading: bloc.shop.values.first,
-            onTap: () => bloc.navigateToShop(context),
+            onTap: () => bloc.navigateToMainDestination(() => navigation.addDestination(3), context),
           ),
-          ListTile(
+          AnalyticsDrawerListTile(
+            analyticsComponentName: bloc.analyticsComponentName,
+            analyticsInstance: analytics.firebaseAnalytics,
             title: Text(bloc.profile.keys.first),
             leading: bloc.profile.values.first,
             onTap: () => bloc.navigateToProfile(context),
           ),
-          ListTile(
+          AnalyticsDrawerListTile(
+            analyticsComponentName: bloc.analyticsComponentName,
+            analyticsInstance: analytics.firebaseAnalytics,
             title: Text(bloc.about.keys.first),
             leading: bloc.about.values.first,
             onTap: () => bloc.navigateToAbout(context),

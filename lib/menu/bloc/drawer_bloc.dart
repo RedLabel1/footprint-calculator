@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:footprint_calculator/analytics/analytics.dart';
 import 'package:footprint_calculator/main.dart';
-import 'package:footprint_calculator/menu/view/bottom_nav_bar.dart';
 
-class DrawerBloc {
+class DrawerBloc implements Analytics {
+
+  @override
+  String get analyticsComponentName => "drawer_menu";
 
   Map<String, Widget> get footprint => {"Calcula tu huella": Image.asset("assets/icons/footprint_selected.png")};
 
@@ -16,23 +19,8 @@ class DrawerBloc {
 
   Map<String, Widget> get about => {"Contacto & FAQ": Image.asset("assets/icons/info_selected.png")};
 
-  void navigateToFootprint(BuildContext context) {
-    bottomNavigationBar.onTap(0);
-    _closeDrawer(context);
-  }
-
-  void navigateToTips(BuildContext context) {
-    bottomNavigationBar.onTap(1);
-    _closeDrawer(context);
-  }
-
-  void navigateToGame(BuildContext context) {
-    bottomNavigationBar.onTap(2);
-    _closeDrawer(context);
-  }
-
-  void navigateToShop(BuildContext context) {
-    bottomNavigationBar.onTap(3);
+  void navigateToMainDestination(VoidCallback callback, BuildContext context) {
+    callback();
     _closeDrawer(context);
   }
 
