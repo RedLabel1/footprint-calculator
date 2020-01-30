@@ -4,7 +4,6 @@ import 'package:footprint_calculator/menu/model/destination.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MainNavigationBloc implements Analytics {
-
   Destination _initialDestination;
   PublishSubject<Destination> _currentDestination;
 
@@ -24,7 +23,9 @@ class MainNavigationBloc implements Analytics {
 
   get children => destinations.map<Widget>((destination) => destination.child).toList();
 
-  get bottomNavigationBarItems => destinations.map<BottomNavigationBarItem>((destination) => destination.bottomNavigationBarItem).toList();
+  get bottomNavigationBarItems => destinations
+      .map<BottomNavigationBarItem>((destination) => destination.bottomNavigationBarItem)
+      .toList();
 
   set destination(Destination destination) => _currentDestination.add(destination);
 

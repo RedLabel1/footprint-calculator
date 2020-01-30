@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:footprint_calculator/footprint/bloc/footprint_bloc.dart';
+import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 class Footprint extends StatelessWidget {
@@ -51,7 +52,7 @@ class StatsPlaceholder extends StatelessWidget {
             Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Aquí aparecerán tus estadísticas una vez calcules tu huella.",
+                  S.of(context).footprint_no_stats,
                   textAlign: TextAlign.center,
                 ))
           ],

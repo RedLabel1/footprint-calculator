@@ -16,24 +16,31 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.6.0 <3.0.0"
 
+flutter_intl:
+  enabled: true
+
 dependencies:
   flutter:
     sdk: flutter
 
-  #core libs
+  # core libs
   provider: ^3.2.0
   rxdart: ^0.22.6
 
-  #google analytics
+  # google analytics
   firebase_core: ^0.4.3+2
   firebase_analytics: ^5.0.10
 
-  #google authentication
+  # google authentication
   firebase_auth: ^0.15.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+
+  # localization
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:

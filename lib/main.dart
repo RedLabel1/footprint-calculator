@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:footprint_calculator/about/about.dart';
 import 'package:footprint_calculator/analytics/analytics_bloc.dart';
 import 'package:footprint_calculator/footprint/bloc/footprint_bloc.dart';
+import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:footprint_calculator/menu/bloc/drawer_bloc.dart';
 import 'package:footprint_calculator/menu/bloc/main_navigation_bloc.dart';
 import 'package:footprint_calculator/menu/view/app_bar.dart';
@@ -27,6 +29,12 @@ MultiProvider footprintCalculator() => MultiProvider(
       routes[Routes.PROFILE] : (_) => Profile(),
       routes[Routes.ABOUT] : (_) => About(),
     },
+    localizationsDelegates: [
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      S.delegate
+    ],
+    supportedLocales: S.delegate.supportedLocales,
   ),
 );
 
