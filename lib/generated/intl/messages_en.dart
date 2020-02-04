@@ -21,7 +21,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "company_name" : MessageLookupByLibrary.simpleMessage("Agreste foundation"),
     "footprint_no_stats" : MessageLookupByLibrary.simpleMessage("Once you complete your footprint calculations, you will find your stats here."),
+    "menu_tooltip" : MessageLookupByLibrary.simpleMessage("Menu"),
     "screen_name_about" : MessageLookupByLibrary.simpleMessage("Contact & FAQ"),
     "screen_name_footprint" : MessageLookupByLibrary.simpleMessage("Calculate your footprint"),
     "screen_name_game" : MessageLookupByLibrary.simpleMessage("Game"),

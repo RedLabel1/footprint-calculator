@@ -1,35 +1,32 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:footprint_calculator/analytics/analytics.dart';
-import 'package:footprint_calculator/menu/model/destination.dart';
+import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MainNavigationBloc implements Analytics {
-  Destination _initialDestination;
-  PublishSubject<Destination> _currentDestination;
+  int _initialDestination;
+  PublishSubject<int> _currentDestination;
 
   MainNavigationBloc() {
-    _initialDestination = destinations[0];
-    _currentDestination = PublishSubject<Destination>();
+    _initialDestination = 0;
+    _currentDestination = PublishSubject<int>();
   }
 
   @override
   String get analyticsComponentName => "main_navigation";
 
-  Destination get initialDestination => _initialDestination;
+  Map<int, String> destinations(BuildContext context) => {
+        0: S.of(context).screen_name_footprint,
+        1: S.of(context).screen_name_tips,
+        2: S.of(context).screen_name_game,
+        3: S.of(context).screen_name_shop,
+      };
 
-  Observable<Destination> get currentDestination => _currentDestination.stream;
+  int get initialDestination => _initialDestination;
 
-  int indexOf(Destination destination) => destinations.indexOf(destination);
+  Observable<int> get currentDestination => _currentDestination.stream;
 
-  get children => destinations.map<Widget>((destination) => destination.child).toList();
-
-  get bottomNavigationBarItems => destinations
-      .map<BottomNavigationBarItem>((destination) => destination.bottomNavigationBarItem)
-      .toList();
-
-  set destination(Destination destination) => _currentDestination.add(destination);
-
-  void addDestination(int index) => _currentDestination.add(destinations[index]);
+  set destination(int destination) => _currentDestination.add(destination);
 
   void dispose() => _currentDestination.close();
 }

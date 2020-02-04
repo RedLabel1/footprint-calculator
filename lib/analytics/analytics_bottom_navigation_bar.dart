@@ -1,15 +1,9 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:footprint_calculator/menu/model/destination.dart';
-
-final analyticsBottomNavigationBarKey = GlobalKey(debugLabel: "bottom_navigation_bar_key");
-
-final analyticsBottomNavigationBar = analyticsBottomNavigationBarKey.currentWidget as BottomNavigationBar;
 
 class AnalyticsBottomNavigationBar extends StatelessWidget {
 
   final List<BottomNavigationBarItem> items;
-  final String analyticsComponentName;
   final FirebaseAnalytics analyticsInstance;
   final ValueChanged<int> onTap;
   final int currentIndex;
@@ -31,7 +25,6 @@ class AnalyticsBottomNavigationBar extends StatelessWidget {
 
   AnalyticsBottomNavigationBar({
     @required this.items,
-    @required this.analyticsComponentName,
     @required this.analyticsInstance,
     this.onTap,
     this.currentIndex = 0,
@@ -55,7 +48,6 @@ class AnalyticsBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      key: analyticsBottomNavigationBarKey,
       items: items,
       onTap: (index) => onAnalyticsBottomNavigationBarItemTapped(index),
       currentIndex: currentIndex,
@@ -80,7 +72,7 @@ class AnalyticsBottomNavigationBar extends StatelessWidget {
   void onAnalyticsBottomNavigationBarItemTapped(int index) {
     analyticsInstance.logEvent(
       name: "bottom_navigation_bar_item_tapped",
-      parameters: { "item_name" : destinations[index].title },
+      parameters: { "item_name" : (items[index].title as Text).data },
     );
     onTap(index);
   }

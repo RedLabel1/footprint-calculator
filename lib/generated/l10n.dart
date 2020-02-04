@@ -29,6 +29,15 @@ class S {
 
   final String localeName;
 
+  String get company_name {
+    return Intl.message(
+      'Agreste foundation',
+      name: 'company_name',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get screen_name_footprint {
     return Intl.message(
       'Calculate your footprint',
@@ -87,6 +96,15 @@ class S {
     return Intl.message(
       'Contact & FAQ',
       name: 'screen_name_about',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get menu_tooltip {
+    return Intl.message(
+      'Menu',
+      name: 'menu_tooltip',
       desc: '',
       args: [],
     );
