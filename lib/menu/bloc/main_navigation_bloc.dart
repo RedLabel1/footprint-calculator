@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:footprint_calculator/analytics/analytics.dart';
+import 'package:flutter/material.dart';
 import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:rxdart/rxdart.dart';
 
-class MainNavigationBloc implements Analytics {
+class MainNavigationBloc {
   int _initialDestination;
   PublishSubject<int> _currentDestination;
 
@@ -11,9 +10,6 @@ class MainNavigationBloc implements Analytics {
     _initialDestination = 0;
     _currentDestination = PublishSubject<int>();
   }
-
-  @override
-  String get analyticsComponentName => "main_navigation";
 
   Map<int, String> destinations(BuildContext context) => {
         0: S.of(context).screen_name_footprint,

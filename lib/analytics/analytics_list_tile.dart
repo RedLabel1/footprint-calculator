@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class AnalyticsDrawerListTile extends StatelessWidget {
 
-  final String analyticsComponentName;
   final FirebaseAnalytics analyticsInstance;
   final Widget leading;
   final Text title;
@@ -18,7 +17,6 @@ class AnalyticsDrawerListTile extends StatelessWidget {
   final bool selected;
 
   AnalyticsDrawerListTile({
-    @required this.analyticsComponentName,
     @required this.analyticsInstance,
     this.leading,
     this.title,

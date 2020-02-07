@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:footprint_calculator/footprint/bloc/footprint_bloc.dart';
 import 'package:footprint_calculator/generated/l10n.dart';
+import 'package:footprint_calculator/main.dart';
 import 'package:provider/provider.dart';
 
 class Footprint extends StatelessWidget {
@@ -24,7 +25,7 @@ class CalculatorButton extends StatelessWidget {
     FootprintBloc bloc = Provider.of<FootprintBloc>(context);
     return Positioned(
       child: FloatingActionButton(
-        onPressed: () => bloc.navigateToFootprintStep1(context),
+        onPressed: () => bloc.navigateTo(Routes.FOOTPRINT_STEP_1, context),
         child: Icon(Icons.add),
       ),
       bottom: 16,
@@ -42,12 +43,10 @@ class StatsPlaceholder extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              child: Image.asset(
-                "assets/icons/stats.png",
-                height: 80.0,
-                fit: BoxFit.cover,
-              ),
+            Image.asset(
+              "assets/icons/stats.png",
+              height: 80.0,
+              fit: BoxFit.cover,
             ),
             Padding(
                 padding: const EdgeInsets.all(8.0),

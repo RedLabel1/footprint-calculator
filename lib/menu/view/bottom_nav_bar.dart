@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:footprint_calculator/analytics/analytics_bloc.dart';
 import 'package:footprint_calculator/analytics/analytics_bottom_navigation_bar.dart';
-import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:footprint_calculator/menu/bloc/main_navigation_bloc.dart';
 import 'package:provider/provider.dart';
 

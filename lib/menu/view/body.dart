@@ -7,12 +7,6 @@ import 'package:footprint_calculator/tips/tips.dart';
 import 'package:provider/provider.dart';
 
 class Body extends StatelessWidget {
-  final List<Widget> destinations = [
-    Footprint(),
-    Tips(),
-    Game(),
-    Shop(),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +21,11 @@ class Body extends StatelessWidget {
 
   IndexedStack _indexedStack(int destination, MainNavigationBloc bloc) => IndexedStack(
         index: destination,
-        children: destinations,
+        children: [
+          Footprint(),
+          Tips(),
+          Game(),
+          Shop(),
+        ],
       );
 }

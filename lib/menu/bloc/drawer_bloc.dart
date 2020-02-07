@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:footprint_calculator/analytics/analytics.dart';
 import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:footprint_calculator/main.dart';
 
-class DrawerBloc implements Analytics {
-  @override
-  String get analyticsComponentName => "drawer_menu";
-
+class DrawerBloc {
   Map<String, Widget> footprint(BuildContext context) =>
       {S.of(context).screen_name_footprint: Image.asset("assets/icons/footprint_selected.png")};
 

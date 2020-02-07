@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class AnalyticsAppBarIconButton extends StatelessWidget {
   final Widget icon;
   final VoidCallback onPressed;
-  final String analyticsComponentName;
   final FirebaseAnalytics analyticsInstance;
   final double iconSize;
   final VisualDensity visualDensity;
@@ -25,7 +24,6 @@ class AnalyticsAppBarIconButton extends StatelessWidget {
   AnalyticsAppBarIconButton({
     @required this.icon,
     @required this.onPressed,
-    @required this.analyticsComponentName,
     @required this.analyticsInstance,
     this.iconSize = 24.0,
     this.visualDensity,
