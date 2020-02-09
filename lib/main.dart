@@ -43,6 +43,7 @@ MultiProvider footprintCalculator() => MultiProvider(
           S.delegate
         ],
         supportedLocales: S.delegate.supportedLocales,
+        theme: _agresteLightTheme(),
       ),
     );
 
@@ -59,6 +60,13 @@ class Main extends StatelessWidget {
 }
 
 SafeArea _safeArea() => SafeArea(child: Body());
+
+ThemeData _agresteLightTheme() => ThemeData(
+  brightness: Brightness.light,
+  primaryColor: Colors.lightBlue[600],
+  accentColor: Colors.lightBlue[600],
+  primaryColorDark: Colors.lightBlue[800],
+);
 
 const routes = {
   Routes.MAIN: "/",
