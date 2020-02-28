@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:footprint_calculator/analytics/analytics_app_bar_icon_button.dart';
 import 'package:footprint_calculator/analytics/analytics_bloc.dart';
-import 'package:footprint_calculator/common/Heroes.dart';
 import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:footprint_calculator/main.dart';
 import 'package:footprint_calculator/menu/bloc/main_navigation_bloc.dart';
@@ -18,9 +17,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     return StreamBuilder(
       stream: bloc.currentDestination,
       initialData: bloc.initialDestination,
-      builder: (_, AsyncSnapshot<int> snapshot) => Hero(
-          tag: Heroes.APPBAR_TO_BACKGROUND,
-          child: _appBar(snapshot.data, context, bloc, analytics)),
+      builder: (_, AsyncSnapshot<int> snapshot) => _appBar(snapshot.data, context, bloc, analytics),
     );
   }
 

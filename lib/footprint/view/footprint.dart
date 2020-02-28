@@ -11,15 +11,15 @@ class Footprint extends StatelessWidget {
       //child: _statsPlaceHolder(),
       child: Stack(
         children: <Widget>[
-          StatsPlaceholder(),
-          CalculatorButton(),
+          _StatsPlaceholder(),
+          _CalculatorButton(),
         ],
       ),
     );
   }
 }
 
-class CalculatorButton extends StatelessWidget {
+class _CalculatorButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FootprintBloc bloc = Provider.of<FootprintBloc>(context);
@@ -34,7 +34,7 @@ class CalculatorButton extends StatelessWidget {
   }
 }
 
-class StatsPlaceholder extends StatelessWidget {
+class _StatsPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(

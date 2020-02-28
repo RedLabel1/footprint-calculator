@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:footprint_calculator/about/about.dart';
 import 'package:footprint_calculator/analytics/analytics_bloc.dart';
+import 'package:footprint_calculator/common/Styles.dart';
 import 'package:footprint_calculator/footprint/bloc/footprint_bloc.dart';
-import 'package:footprint_calculator/footprint/step1/footprint_step_1.dart';
+import 'package:footprint_calculator/footprint/data/network/footprint_provider.dart';
+import 'package:footprint_calculator/footprint/step1/view/footprint_step_1.dart';
+import 'package:footprint_calculator/footprint/step2/view/footprint_step_2.dart';
 import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:footprint_calculator/menu/bloc/drawer_bloc.dart';
 import 'package:footprint_calculator/menu/bloc/main_navigation_bloc.dart';
@@ -20,7 +23,9 @@ MultiProvider footprintCalculator() => MultiProvider(
       providers: [
         Provider<MainNavigationBloc>(
             create: (_) => MainNavigationBloc(), dispose: (_, bloc) => bloc.dispose()),
-        Provider<FootprintBloc>(create: (_) => FootprintBloc()),
+        Provider<FootprintBloc>(
+            create: (_) => FootprintBloc(footprintProvider: FootprintProvider()),
+            dispose: (_, bloc) => bloc.dispose()),
         Provider<DrawerBloc>(create: (_) => DrawerBloc()),
         Provider<AnalyticsBloc>(create: (_) => AnalyticsBloc()),
       ],
@@ -31,7 +36,7 @@ MultiProvider footprintCalculator() => MultiProvider(
           routes[Routes.PROFILE]: (_) => Profile(),
           routes[Routes.ABOUT]: (_) => About(),
           routes[Routes.FOOTPRINT_STEP_1]: (_) => FootprintStep1(),
-          routes[Routes.FOOTPRINT_STEP_2]: (_) => About(),
+          routes[Routes.FOOTPRINT_STEP_2]: (_) => FootprintStep2(),
           routes[Routes.FOOTPRINT_STEP_3]: (_) => About(),
           routes[Routes.FOOTPRINT_STEP_4]: (_) => About(),
           routes[Routes.FOOTPRINT_STEP_5]: (_) => About(),
@@ -43,7 +48,7 @@ MultiProvider footprintCalculator() => MultiProvider(
           S.delegate
         ],
         supportedLocales: S.delegate.supportedLocales,
-        theme: _agresteLightTheme(),
+        theme: agresteLightTheme(),
       ),
     );
 
@@ -60,13 +65,6 @@ class Main extends StatelessWidget {
 }
 
 SafeArea _safeArea() => SafeArea(child: Body());
-
-ThemeData _agresteLightTheme() => ThemeData(
-  brightness: Brightness.light,
-  primaryColor: Colors.lightBlue[600],
-  accentColor: Colors.lightBlue[600],
-  primaryColorDark: Colors.lightBlue[800],
-);
 
 const routes = {
   Routes.MAIN: "/",

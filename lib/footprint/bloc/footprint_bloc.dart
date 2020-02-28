@@ -1,29 +1,35 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:footprint_calculator/generated/l10n.dart';
+import 'package:footprint_calculator/footprint/data/model/energy_consumption_ranges.dart';
+import 'package:footprint_calculator/footprint/data/network/footprint_provider.dart';
 import 'package:footprint_calculator/main.dart';
 import 'package:rxdart/rxdart.dart';
 
 class FootprintBloc {
-  int _initialDestination;
-  PublishSubject<int> _currentDestination;
+  final FootprintProvider footprintProvider;
 
-  FootprintBloc() {
-    _initialDestination = 1;
-    _currentDestination = PublishSubject<int>();
+  PublishSubject<EnergyConsumptionRange> _selectedEnergyConsumptionRange;
+
+  Stream<EnergyConsumptionRanges> get energyConsumptionRanges => footprintProvider
+      .retrieveEnergyConsumptionRanges()
+      .transform(_energyConsumptionRangesTransform());
+
+  FootprintBloc({this.footprintProvider}) {
+    _selectedEnergyConsumptionRange = PublishSubject<EnergyConsumptionRange>();
   }
 
-  Map<int, String> steps(BuildContext context) => {
-        1: S.of(context).screen_name_footprint,
-        2: S.of(context).screen_name_tips,
-        3: S.of(context).screen_name_game,
-        4: S.of(context).screen_name_shop,
-      };
+  Stream<EnergyConsumptionRange> get selectedEnergyConsumptionRange =>
+      _selectedEnergyConsumptionRange.stream;
 
-  int get initialDestination => _initialDestination;
+  set selectEnergyConsumptionRange(EnergyConsumptionRange energyConsumptionRange) =>
+      _selectedEnergyConsumptionRange.add(energyConsumptionRange);
 
-  Observable<int> get currentDestination => _currentDestination.stream;
-
-  set destination(int destination) => _currentDestination.add(destination);
+  StreamTransformer<QuerySnapshot, EnergyConsumptionRanges> _energyConsumptionRangesTransform() =>
+      StreamTransformer<QuerySnapshot, EnergyConsumptionRanges>.fromHandlers(
+          handleData: (data, sink) =>
+              sink.add(EnergyConsumptionRanges().from(querySnapshot: data).sort()));
 
   void navigateTo(Routes route, BuildContext context) =>
       Navigator.of(context).pushNamed(routes[route]);
@@ -31,5 +37,5 @@ class FootprintBloc {
   void endJourney(BuildContext context) =>
       Navigator.of(context).popUntil(ModalRoute.withName(routes[Routes.MAIN]));
 
-  void dispose() => _currentDestination.close();
+  void dispose() => _selectedEnergyConsumptionRange.close();
 }

@@ -2,7 +2,11 @@
   "company_name" : "Agreste foundation",
 
   "screen_name_footprint" : "Calculate your footprint",
-  "footprint_no_stats": "Once you complete your footprint calculations, you will find your stats here.",
+  "footprint_no_stats": "Once you complete your footprint calculations, you will find your stats here",
+  "footprint_1_title": "Energy consumption",
+  "footprint_1_energy_consumption_range": "{min} to {max} kWh",
+  "footprint_1_energy_consumption_range_no_max": "{min} kWh or more",
+  "footprint_1_next_button": "Next",
 
 
   "screen_name_tips" : "Tips",

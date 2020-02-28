@@ -20,7 +20,7 @@ class MainNavigationBloc {
 
   int get initialDestination => _initialDestination;
 
-  Observable<int> get currentDestination => _currentDestination.stream;
+  Stream<int> get currentDestination => _currentDestination.stream;
 
   set destination(int destination) => _currentDestination.add(destination);
 

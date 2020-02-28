@@ -12,17 +12,11 @@ class FootprintStepsAppBar extends StatelessWidget implements PreferredSizeWidge
     FootprintBloc bloc = Provider.of<FootprintBloc>(context);
     AnalyticsBloc analytics = Provider.of<AnalyticsBloc>(context);
 
-    return StreamBuilder(
-      stream: bloc.currentDestination,
-      initialData: bloc.initialDestination,
-      builder: (_, AsyncSnapshot<int> snapshot) => _appBar(snapshot.data, context, bloc, analytics),
-    );
+    return _appBar(context, bloc, analytics);
   }
 
-  Widget _appBar(
-          int destination, BuildContext context, FootprintBloc bloc, AnalyticsBloc analytics) =>
+  Widget _appBar(BuildContext context, FootprintBloc bloc, AnalyticsBloc analytics) =>
       AppBar(
-        title: Text(bloc.steps(context)[destination]),
         actions: <Widget>[
           AnalyticsAppBarIconButton(
               analyticsInstance: analytics.firebaseAnalytics,

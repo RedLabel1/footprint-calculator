@@ -49,8 +49,44 @@ class S {
 
   String get footprint_no_stats {
     return Intl.message(
-      'Once you complete your footprint calculations, you will find your stats here.',
+      'Once you complete your footprint calculations, you will find your stats here',
       name: 'footprint_no_stats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get footprint_1_title {
+    return Intl.message(
+      'Energy consumption',
+      name: 'footprint_1_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String footprint_1_energy_consumption_range(dynamic min, dynamic max) {
+    return Intl.message(
+      '$min to $max kWh',
+      name: 'footprint_1_energy_consumption_range',
+      desc: '',
+      args: [min, max],
+    );
+  }
+
+  String footprint_1_energy_consumption_range_no_max(dynamic min) {
+    return Intl.message(
+      '$min kWh or more',
+      name: 'footprint_1_energy_consumption_range_no_max',
+      desc: '',
+      args: [min],
+    );
+  }
+
+  String get footprint_1_next_button {
+    return Intl.message(
+      'Next',
+      name: 'footprint_1_next_button',
       desc: '',
       args: [],
     );

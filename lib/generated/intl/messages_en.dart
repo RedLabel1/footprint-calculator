@@ -19,10 +19,18 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static m0(min, max) => "${min} to ${max} kWh";
+
+  static m1(min) => "${min} kWh or more";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "company_name" : MessageLookupByLibrary.simpleMessage("Agreste foundation"),
-    "footprint_no_stats" : MessageLookupByLibrary.simpleMessage("Once you complete your footprint calculations, you will find your stats here."),
+    "footprint_1_energy_consumption_range" : m0,
+    "footprint_1_energy_consumption_range_no_max" : m1,
+    "footprint_1_next_button" : MessageLookupByLibrary.simpleMessage("Next"),
+    "footprint_1_title" : MessageLookupByLibrary.simpleMessage("Energy consumption"),
+    "footprint_no_stats" : MessageLookupByLibrary.simpleMessage("Once you complete your footprint calculations, you will find your stats here"),
     "menu_tooltip" : MessageLookupByLibrary.simpleMessage("Menu"),
     "screen_name_about" : MessageLookupByLibrary.simpleMessage("Contact & FAQ"),
     "screen_name_footprint" : MessageLookupByLibrary.simpleMessage("Calculate your footprint"),

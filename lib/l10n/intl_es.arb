@@ -2,7 +2,11 @@
   "company_name" : "Fundación Agreste",
 
   "screen_name_footprint": "Calcula tu huella",
-  "footprint_no_stats": "Aquí aparecerán tus estadísticas una vez calcules tu huella.",
+  "footprint_no_stats": "Aquí aparecerán tus estadísticas una vez calcules tu huella",
+  "footprint_1_title": "Consumo de energía",
+  "footprint_1_energy_consumption_range": "Entre {min} y {max} kWh",
+  "footprint_1_energy_consumption_range_no_max": "Más de {min} kWh",
+  "footprint_1_next_button": "Continuar",
 
 
   "screen_name_tips": "Consejos",
