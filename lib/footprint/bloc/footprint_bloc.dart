@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:footprint_calculator/footprint/data/model/energy_consumption_ranges.dart';
+import 'package:footprint_calculator/footprint/data/model/range.dart';
 import 'package:footprint_calculator/footprint/data/network/footprint_provider.dart';
 import 'package:footprint_calculator/main.dart';
 import 'package:rxdart/rxdart.dart';
@@ -10,20 +11,20 @@ import 'package:rxdart/rxdart.dart';
 class FootprintBloc {
   final FootprintProvider footprintProvider;
 
-  PublishSubject<EnergyConsumptionRange> _selectedEnergyConsumptionRange;
+  PublishSubject<Range> _selectedEnergyConsumptionRange;
 
   Stream<EnergyConsumptionRanges> get energyConsumptionRanges => footprintProvider
       .retrieveEnergyConsumptionRanges()
       .transform(_energyConsumptionRangesTransform());
 
   FootprintBloc({this.footprintProvider}) {
-    _selectedEnergyConsumptionRange = PublishSubject<EnergyConsumptionRange>();
+    _selectedEnergyConsumptionRange = PublishSubject<Range>();
   }
 
-  Stream<EnergyConsumptionRange> get selectedEnergyConsumptionRange =>
+  Stream<Range> get selectedEnergyConsumptionRange =>
       _selectedEnergyConsumptionRange.stream;
 
-  set selectEnergyConsumptionRange(EnergyConsumptionRange energyConsumptionRange) =>
+  set selectEnergyConsumptionRange(Range energyConsumptionRange) =>
       _selectedEnergyConsumptionRange.add(energyConsumptionRange);
 
   StreamTransformer<QuerySnapshot, EnergyConsumptionRanges> _energyConsumptionRangesTransform() =>

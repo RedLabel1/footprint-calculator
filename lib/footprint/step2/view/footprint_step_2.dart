@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:footprint_calculator/analytics/analytics.dart';
+import 'package:footprint_calculator/analytics/analytics_bloc.dart';
+import 'package:footprint_calculator/analytics/analytics_raised_button.dart';
+import 'package:footprint_calculator/common/heroes.dart';
 import 'package:footprint_calculator/footprint/bloc/footprint_bloc.dart';
 import 'package:footprint_calculator/footprint/data/model/energy_consumption_ranges.dart';
+import 'package:footprint_calculator/footprint/data/model/range.dart';
 import 'package:footprint_calculator/footprint/view/footprint_steps_app_bar.dart';
 import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:footprint_calculator/main.dart';
@@ -33,7 +38,7 @@ class _Body extends StatelessWidget {
         Column(children: <Widget>[
           _TopIcons(),
           Padding(padding: EdgeInsets.all(32)),
-          _Form(),
+          // _Form(),
         ]),
         _Next(),
       ],
@@ -47,25 +52,45 @@ class _TopIcons extends StatelessWidget {
     return Row(
       children: <Widget>[
         Expanded(
-            flex: 2,
-            child: Image.asset("assets/icons/energy_idle.png",
-                height: 46, width: 46, fit: BoxFit.contain)),
+          flex: 2,
+          child: Hero(
+            tag: Heroes.FOOTPRINT_TOP_ICON_ENERGY,
+            child: Image.asset("assets/icons/energy_selected.png",
+                height: 46, width: 46, fit: BoxFit.contain),
+          ),
+        ),
         Expanded(
-            flex: 3,
+          flex: 3,
+          child: Hero(
+            tag: Heroes.FOOTPRINT_TOP_ICON_TRANSPORTATION,
             child: Image.asset("assets/icons/transportation_selected.png",
-                height: 50, width: 50, fit: BoxFit.contain)),
+                height: 50, width: 50, fit: BoxFit.contain),
+          ),
+        ),
         Expanded(
-            flex: 2,
+          flex: 2,
+          child: Hero(
+            tag: Heroes.FOOTPRINT_TOP_ICON_FOOD,
             child: Image.asset("assets/icons/food_idle.png",
-                height: 46, width: 46, fit: BoxFit.contain)),
+                height: 46, width: 46, fit: BoxFit.contain),
+          ),
+        ),
         Expanded(
-            flex: 2,
+          flex: 2,
+          child: Hero(
+            tag: Heroes.FOOTPRINT_TOP_ICON_SHOPPING,
             child: Image.asset("assets/icons/shopping_idle.png",
-                height: 46, width: 46, fit: BoxFit.contain)),
+                height: 46, width: 46, fit: BoxFit.contain),
+          ),
+        ),
         Expanded(
-            flex: 2,
+          flex: 2,
+          child: Hero(
+            tag: Heroes.FOOTPRINT_TOP_ICON_TRAVELS,
             child: Image.asset("assets/icons/travels_idle.png",
-                height: 46, width: 46, fit: BoxFit.contain)),
+                height: 46, width: 46, fit: BoxFit.contain),
+          ),
+        ),
       ],
     );
   }
@@ -88,7 +113,7 @@ class _Form extends StatelessWidget {
 class _Title extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text(S.of(context).footprint_1_title,
+    return Text(S.of(context).footprint_2_title,
         style: Theme.of(context).primaryTextTheme.headline1);
   }
 }
@@ -134,7 +159,7 @@ class _BuildChoiceList extends StatelessWidget {
 }
 
 class _ChoiceChip extends StatelessWidget {
-  final EnergyConsumptionRange displayRange, selectedRange;
+  final Range displayRange, selectedRange;
 
   _ChoiceChip({this.displayRange, this.selectedRange});
 
@@ -188,9 +213,16 @@ class _NextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FootprintBloc bloc = Provider.of<FootprintBloc>(context);
-    return RaisedButton(
-      onPressed: enabled ? () => bloc.navigateTo(Routes.FOOTPRINT_STEP_2, context) : null,
-      child: Text(S.of(context).footprint_1_next_button),
+    AnalyticsBloc analytics = Provider.of<AnalyticsBloc>(context);
+    return Hero(
+      tag: Heroes.FOOTPRINT_NEXT_BUTTON,
+      child: AnalyticsRaisedButton(
+        analyticsComponentName: Analytics.ANALYTICS_FOOTPRINT_STEP_2_NEXT_BUTTON,
+        enabled: enabled,
+        analyticsInstance: analytics.firebaseAnalytics,
+        onPressed: () => bloc.navigateTo(Routes.FOOTPRINT_STEP_2, context),
+        child: Text(S.of(context).footprint_next_button),
+      ),
     );
   }
 }

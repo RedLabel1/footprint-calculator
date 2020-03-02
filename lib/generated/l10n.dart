@@ -56,6 +56,15 @@ class S {
     );
   }
 
+  String get footprint_next_button {
+    return Intl.message(
+      'Next',
+      name: 'footprint_next_button',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get footprint_1_title {
     return Intl.message(
       'Energy consumption',
@@ -83,10 +92,10 @@ class S {
     );
   }
 
-  String get footprint_1_next_button {
+  String get footprint_2_title {
     return Intl.message(
-      'Next',
-      name: 'footprint_1_next_button',
+      'Transportation',
+      name: 'footprint_2_title',
       desc: '',
       args: [],
     );

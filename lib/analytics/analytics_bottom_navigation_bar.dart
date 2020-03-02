@@ -1,14 +1,15 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:footprint_calculator/analytics/analytics.dart';
 
 class AnalyticsBottomNavigationBar extends StatelessWidget {
-
   final List<BottomNavigationBarItem> items;
   final FirebaseAnalytics analyticsInstance;
   final ValueChanged<int> onTap;
   final int currentIndex;
   final double elevation;
   final BottomNavigationBarType type;
+
   Color get fixedColor => selectedItemColor;
   final Color backgroundColor;
   final double iconSize;
@@ -49,7 +50,7 @@ class AnalyticsBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: items,
-      onTap: (index) => onAnalyticsBottomNavigationBarItemTapped(index),
+      onTap: (index) => _onAnalyticsBottomNavigationBarItemTapped(index),
       currentIndex: currentIndex,
       elevation: elevation,
       type: type,
@@ -69,10 +70,13 @@ class AnalyticsBottomNavigationBar extends StatelessWidget {
     );
   }
 
-  void onAnalyticsBottomNavigationBarItemTapped(int index) {
+  void _onAnalyticsBottomNavigationBarItemTapped(int index) {
     analyticsInstance.logEvent(
-      name: "bottom_navigation_bar_item_tapped",
-      parameters: { "item_name" : (items[index].title as Text).data },
+      name: Analytics.ANALYTICS_BOTTOM_NAVIGATION_BAR_ITEM_TAPPED,
+      parameters: {
+        Analytics.ANALYTICS_PARAMETER_ITEM_NAME:
+            Analytics.ANALYTICS_BOTTOM_NAVIGATION_BAR_ITEM_NAME[index]
+      },
     );
     onTap(index);
   }

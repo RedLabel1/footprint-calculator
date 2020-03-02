@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:footprint_calculator/analytics/analytics.dart';
 import 'package:footprint_calculator/analytics/analytics_app_bar_icon_button.dart';
 import 'package:footprint_calculator/analytics/analytics_bloc.dart';
 import 'package:footprint_calculator/generated/l10n.dart';
@@ -30,11 +31,13 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         title: Text(bloc.destinations(context)[destination]),
         actions: <Widget>[
           AnalyticsAppBarIconButton(
+              analyticsComponentName: Analytics.ANALYTICS_APP_BAR_PROFILE_ITEM,
               analyticsInstance: analytics.firebaseAnalytics,
               icon: Image.asset("assets/icons/profile_idle.png"),
               onPressed: () => _navigateToProfile(context),
               tooltip: S.of(context).screen_name_profile),
           AnalyticsAppBarIconButton(
+              analyticsComponentName: Analytics.ANALYTICS_APP_BAR_MENU_ITEM,
               analyticsInstance: analytics.firebaseAnalytics,
               icon: Icon(
                 Icons.menu,

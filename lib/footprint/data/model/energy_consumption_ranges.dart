@@ -1,19 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:footprint_calculator/footprint/data/model/range.dart';
 import 'package:footprint_calculator/generated/l10n.dart';
 
-class EnergyConsumptionRange {
-  final int min;
-  final int max;
-
-  EnergyConsumptionRange({
-    this.min,
-    this.max,
-  });
-}
-
 class EnergyConsumptionRanges {
-  final List<EnergyConsumptionRange> ranges;
+  final List<Range> ranges;
 
   EnergyConsumptionRanges({
     this.ranges,
@@ -23,7 +14,7 @@ class EnergyConsumptionRanges {
 extension Mapper on EnergyConsumptionRanges {
   EnergyConsumptionRanges from({QuerySnapshot querySnapshot}) => EnergyConsumptionRanges(
       ranges: querySnapshot.documents
-          .map((document) => EnergyConsumptionRange(
+          .map((document) => Range(
                 min: document["min"],
                 max: document["max"],
               ))
@@ -37,7 +28,7 @@ extension Sort on EnergyConsumptionRanges {
   }
 }
 
-extension Strings on EnergyConsumptionRange {
+extension Strings on Range {
   String string(BuildContext context) {
     if (this.max != null) {
       return S.of(context).footprint_1_energy_consumption_range(min, max);

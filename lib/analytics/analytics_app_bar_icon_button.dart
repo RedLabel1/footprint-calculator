@@ -1,9 +1,11 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:footprint_calculator/analytics/analytics.dart';
 
 class AnalyticsAppBarIconButton extends StatelessWidget {
   final Widget icon;
   final VoidCallback onPressed;
+  final String analyticsComponentName;
   final FirebaseAnalytics analyticsInstance;
   final double iconSize;
   final VisualDensity visualDensity;
@@ -24,6 +26,7 @@ class AnalyticsAppBarIconButton extends StatelessWidget {
   AnalyticsAppBarIconButton({
     @required this.icon,
     @required this.onPressed,
+    @required this.analyticsComponentName,
     @required this.analyticsInstance,
     this.iconSize = 24.0,
     this.visualDensity,
@@ -46,7 +49,7 @@ class AnalyticsAppBarIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: icon,
-      onPressed: () => onAnalyticsAppBarIconPressed(tooltip),
+      onPressed: () => _onAnalyticsAppBarIconPressed(),
       iconSize: iconSize,
       visualDensity: visualDensity,
       padding: padding,
@@ -65,10 +68,10 @@ class AnalyticsAppBarIconButton extends StatelessWidget {
     );
   }
 
-  void onAnalyticsAppBarIconPressed(String name) {
+  void _onAnalyticsAppBarIconPressed() {
     analyticsInstance.logEvent(
-      name: "app_bar_item_tapped",
-      parameters: {"item_name": name},
+      name: Analytics.ANALYTICS_APP_BAR_ITEM_TAPPED,
+      parameters: {Analytics.ANALYTICS_PARAMETER_ITEM_NAME: analyticsComponentName},
     );
     onPressed();
   }

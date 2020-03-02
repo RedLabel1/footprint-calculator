@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:footprint_calculator/analytics/analytics.dart';
+import 'package:footprint_calculator/analytics/analytics_bloc.dart';
+import 'package:footprint_calculator/analytics/analytics_floating_action_button.dart';
 import 'package:footprint_calculator/footprint/bloc/footprint_bloc.dart';
 import 'package:footprint_calculator/generated/l10n.dart';
 import 'package:footprint_calculator/main.dart';
@@ -23,8 +26,11 @@ class _CalculatorButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FootprintBloc bloc = Provider.of<FootprintBloc>(context);
+    AnalyticsBloc analytics = Provider.of<AnalyticsBloc>(context);
     return Positioned(
-      child: FloatingActionButton(
+      child: AnalyticsFloatingActionButton(
+        analyticsComponentName: Analytics.ANALYTICS_FOOTPRINT_NEW_CALCULATION,
+        analyticsInstance: analytics.firebaseAnalytics,
         onPressed: () => bloc.navigateTo(Routes.FOOTPRINT_STEP_1, context),
         child: Icon(Icons.add),
       ),

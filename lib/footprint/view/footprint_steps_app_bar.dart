@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:footprint_calculator/analytics/analytics.dart';
 import 'package:footprint_calculator/analytics/analytics_app_bar_icon_button.dart';
 import 'package:footprint_calculator/analytics/analytics_bloc.dart';
+import 'package:footprint_calculator/common/heroes.dart';
 import 'package:footprint_calculator/footprint/bloc/footprint_bloc.dart';
 import 'package:provider/provider.dart';
 
@@ -16,17 +18,20 @@ class FootprintStepsAppBar extends StatelessWidget implements PreferredSizeWidge
   }
 
   Widget _appBar(BuildContext context, FootprintBloc bloc, AnalyticsBloc analytics) =>
-      AppBar(
-        actions: <Widget>[
-          AnalyticsAppBarIconButton(
-              analyticsInstance: analytics.firebaseAnalytics,
-              icon: Icon(
-                Icons.close,
-                color: Colors.white,
-              ),
-              onPressed: () => bloc.endJourney(context),
-              tooltip: "CLOSE"),
-        ],
+      Hero(
+        tag: Heroes.FOOTPRINT_APPBAR,
+        child: AppBar(
+          actions: <Widget>[
+            AnalyticsAppBarIconButton(
+                analyticsComponentName: Analytics.ANALYTICS_APP_BAR_CLOSE_BUTTON,
+                analyticsInstance: analytics.firebaseAnalytics,
+                icon: Icon(
+                  Icons.close,
+                  color: Colors.white,
+                ),
+                onPressed: () => bloc.endJourney(context)),
+          ],
+        ),
       );
 
   @override

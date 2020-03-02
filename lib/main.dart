@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:footprint_calculator/about/about.dart';
 import 'package:footprint_calculator/analytics/analytics_bloc.dart';
-import 'package:footprint_calculator/common/Styles.dart';
+import 'package:footprint_calculator/common/styles.dart';
 import 'package:footprint_calculator/footprint/bloc/footprint_bloc.dart';
 import 'package:footprint_calculator/footprint/data/network/footprint_provider.dart';
 import 'package:footprint_calculator/footprint/step1/view/footprint_step_1.dart';
